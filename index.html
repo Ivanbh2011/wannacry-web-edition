@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -167,8 +166,8 @@
       </div>
 
       <div class="buttons">
-        <button onclick="alert('Payment not found.')">Check Payment</button>
-        <button onclick="alert('Decryption key not available.')">Decrypt Files</button>
+        <button onclick="verifyPayment()">Check Payment</button>
+        <button onclick="decryptFiles()">Decrypt Files</button>
       </div>
 
       <div class="footer">
@@ -181,6 +180,7 @@
     const now = new Date().getTime();
     const deadline1 = now + 5 * 60 * 1000;
     const deadline2 = now + 15 * 60 * 1000;
+    let paymentVerified = false;
 
     function updateCountdowns() {
       const now = new Date().getTime();
@@ -214,6 +214,20 @@
       setTimeout(animateProgress, 200);
     }
     animateProgress();
+
+    // Payment verification and decryption logic
+    function verifyPayment() {
+      alert('✅ Payment verified successfully!');
+      paymentVerified = true;
+    }
+
+    function decryptFiles() {
+      if (paymentVerified) {
+        alert('🟢 Files have been successfully decrypted!');
+      } else {
+        alert('❌ Error: Payment not verified. Please check payment first.');
+      }
+    }
   </script>
 </body>
 </html>
